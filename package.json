@@ -1,7 +1,7 @@
 {
-  "name": "shopit",
+  "name": "Contemporary Homes and Style",
   "version": "1.0.0",
-  "description": "Full Ecommerce site using mern",
+  "description": "Receipt System for Contemporary Homes and Style",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
