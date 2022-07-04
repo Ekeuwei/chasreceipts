@@ -1,0 +1,14 @@
+{
+    "title": "Construction of Three Tower Hospital",
+    "description": "Contruct a three tower hospital building at the Opolo round about for Glory Land out patient ward",
+    "client": "Glory Land Hospital Ltd",
+    "contact":{
+        "name":"Dennis Okia",
+        "phone":"08033324248",
+        "email":"dennis.okia@gmail.com",
+        "address":"56 Edepie School Road, Edepie, Yenagoa, Bayelsa State"
+    },
+    "budget": 1560300,
+    "duration": 18,
+    "status" : "Pending"
+}

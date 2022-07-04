@@ -1,0 +1,239 @@
+ :root {
+    --rad: .7rem;
+    --dur: .3s;
+    --color-dark: #2f2f2f;
+    --color-theme: #d3d2d2;
+    --color-light: #fff;
+    --color-primary: #1B6B98;
+    --color-brand: #57bd84;
+    --font-fam: "Lato", sans-serif;
+    --height: 5rem;
+    --btn-width: 6rem;
+    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+  }
+
+  h1 {font-size: 32px;}
+  h2 {font-size: 28px;}
+  h3 {font-size: 24px;}
+  h4 {font-size: 20px;}
+  h5 {font-size: 18px; font-weight: 400;}
+  h6 {font-size: 16px; font-weight: 400;}
+  p {font-size: 14px;}
+
+  body {
+    font-family: var(--font-fam);
+    background: var(--color-theme);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  html {
+    box-sizing: border-box;
+    height: 100%;
+    font-size: 10px;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+
+  .container {
+    width: 90vw;
+    padding: 0 20px;
+    background: rgb(236, 236, 236);
+  }
+
+  .search h1 {
+    text-align: center;
+    margin: 10px auto;
+  }
+
+  form {
+    position: relative;
+    width: 55rem;
+    background: var(--color-brand);
+    border-radius: var(--rad);
+  }
+  .search form {
+    margin: 0 auto;
+  }
+  
+  input, button {
+    height: var(--height);
+    font-family: var(--font-fam);
+    border: 0;
+    color: var(--color-dark);
+    font-size: 1.8rem;
+  }
+  
+  input[type=search] {
+    outline: 0;
+    width: 100%;
+    background: var(--color-light);
+    padding: 0 1.6rem;
+    border-radius: var(--rad);
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    transition: all var(--dur) var(--bez);
+    transition-property: width, border-radius;
+    z-index: 1;
+    position: relative;
+  }
+  
+  button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--btn-width);
+    font-weight: bold;
+    background: var(--color-brand);
+    border-radius: 0 var(--rad) var(--rad) 0;
+  }
+
+  input:not(:-moz-placeholder-shown) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+  }
+  
+  input:not(:-ms-input-placeholder) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+  }
+  
+  input:not(:placeholder-shown) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+  }
+  input:not(:-moz-placeholder-shown) + button {
+    display: block;
+  }
+  input:not(:-ms-input-placeholder) + button {
+    display: block;
+  }
+  input:not(:placeholder-shown) + button {
+    display: block;
+  }
+  
+  label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+
+  /* Result */
+  .search-content{
+    margin: 0px 20px;
+  }
+  .item-holder {
+    background: #fff;
+    margin-bottom: 5px;
+    padding: 10px;
+  }
+  .item {
+    display: flex;
+  }
+  .item > * {
+    margin: auto 0;
+  }
+  .item > :first-child {
+    width: 70px;
+    padding: 5px;
+  }
+  .item > :last-child {
+    width: 120px;
+    padding: 10px;
+    text-align: right;
+  }
+  .list {
+    display: block;
+    padding: 0 10px;
+    width: 500px;
+  }
+  .list > * {
+    margin: 0 0;
+  }
+  .list :nth-child(2){
+    color: #3FA9C0;
+    margin-bottom: 5px;
+  }
+
+  .createdat {
+    display: flex;
+    flex-direction: row;
+    height: 16px;
+  }
+
+  .createdat * {
+    margin-left: 5px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+/* Invoice */
+
+.invoice {
+    /* max-width: 75vw; */
+    padding: 20px;
+    background: white;
+    margin: auto;
+}
+  
+.address-head, .client-address {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #fff;
+    font-weight: 400;
+}
+
+.contract-details {
+    margin: auto 0;
+}
+
+.contract-details * {
+    margin: 10px 0;
+}
+
+.client-address {
+    background: var(--color-primary);
+    border-radius: 10px;
+    color: rgba(255, 255, 255, .95);
+}
+
+.c-address *, .address *{
+    margin: 5px 0;
+    text-align: right;
+}
+
+.address-head :first-child{
+    margin: auto 0;
+}
+
+/* TABLE */
+.table {
+    width: 100%;
+}
+
+.table tr {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.installemts .table{
+    background: lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
