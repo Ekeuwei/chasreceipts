@@ -1,11 +1,19 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Carousel } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData';
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getProjectDetails } from '../../actions/projectActions'
+
+const dateFormat = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+function getDurationDate(date, duration){
+    const dateObj = new Date(date).setDate(new Date().getDate() + (duration * 30))
+    return new Date(dateObj).toLocaleDateString('en-us', {year: 'numeric', month: 'long', day: 'numeric'})
+}
 
 const ProjectDetails = ({ match }) => {
 
@@ -46,14 +54,13 @@ const ProjectDetails = ({ match }) => {
                 <div class="detail-items">
                     <hr/>  
                     <h5><strong>Budget:</strong></h5>
-                    <h5>{ project.budget }</h5> 
+                    <h5>₦{ project.budget && project.budget.toLocaleString() }</h5> 
                 </div> 
                 <div class="detail-items">
                     <hr/>  
-                    <h5><strong>Status:</strong></h5>
-                    <h5> {project.status} </h5>
-                    <h5> Started: {project.createdAt} </h5>
-                    <h5> Te completed:  </h5>
+                    <h5><strong>Status:  </strong> {project.status}</h5>
+                    <h5><strong> Started on:  </strong>{new Date(project.createdAt).toLocaleDateString('en-us', dateFormat)} </h5>
+                    <h5><strong>To be completed:  </strong> { `${getDurationDate(project.createdAt, project.duration)}` }</h5>
                 </div>
 
                 <div class="detail-items">
@@ -63,19 +70,16 @@ const ProjectDetails = ({ match }) => {
                         {project.payments && project.payments.map(payment =>(
                             <tr>
                                 <td>{payment.date}</td>
-                                <td>${payment.amount}</td>
+                                <td>₦{payment.amount.toLocaleString()}</td>
                             </tr>                                
                         ))}
                         <tr>
-                            <td>29th May, 2022</td>
-                            <td>50,000</td>
-                        </tr>
-                        <tr>
                             <th>Total</th>
-                            <th>$100,000</th>
+                            <th>₦{ project.payments && project.payments.map(v => v.amount).reduce((a, b) => a + b, 0).toLocaleString()}</th>
                         </tr>
                     </table>
-                    <button className='button' type="submit">Close</button>
+                    <Link to="/login" className="btn ml-4" id="login_btn">Close</Link>
+                    {/* <button id="login_button" className="btn btn-block py-3" type="submit">Close</button> */}
                 </div>
 
             </div>

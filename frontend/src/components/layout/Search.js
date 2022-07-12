@@ -15,16 +15,23 @@ const Search = ({ history }) => {
     }
 
     return (
-        <form onSubmit= { searchHandler } role="search">
-            <label for="search">Search Projects</label>
-            <input 
-                type="search" 
-                id="search" 
-                placeholder="search..." 
-                onChange = {(e) => setKeyword(e.target.value)}
-                autoFocus required/>
-            <button type="submit">Go</button>
-        </form>)
+        <form onSubmit = { searchHandler } >
+            <div className="input-group">
+                <input
+                    type="text"
+                    id="search_field"
+                    className="form-control"
+                    placeholder="Enter Project Name ..."
+                    onChange = {(e) => setKeyword(e.target.value)}
+                />
+                <div className="input-group-append">
+                    <button id="search_btn" className="btn">
+                    <i className="fa fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    )
 }
 
 export default Search

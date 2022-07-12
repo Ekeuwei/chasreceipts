@@ -81,12 +81,15 @@ const projectSchema = new mongoose.Schema({
                 type: Date,
                 default: Date.now
             },
-            amount: Number
+            amount: {
+                type: Number,
+                required: true
+            }
         }
     ],
     status: {
         type: String,
-        default: 0
+        default: 'In Progress'
     },
     createdAt: {
         type: Date,

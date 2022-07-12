@@ -30,6 +30,7 @@ exports.newProject = catchAsyncErrors( async (req, res, next) => {
     req.body.images = imagesLinks;
     // req.body.user = req.user.id;
     req.body.contact = JSON.parse(req.body.contact);
+    req.body.payments = JSON.parse(req.body.payments);
     const project = await Project.create(req.body);
 
     res.status(201).json({

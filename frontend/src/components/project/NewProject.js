@@ -49,6 +49,7 @@ const NewProject = ({ history }) => {
             email: email,
             address: address
         }))
+        formData.set('payments', JSON.stringify([{amount: payments}]))
         formData.set('title', title)
         formData.set('description', description)
         formData.set('duration', duration)
