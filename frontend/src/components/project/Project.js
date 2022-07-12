@@ -8,7 +8,7 @@ const Project = ({ project, col }) => {
                 <div className="card p-3 rounded">
                     <img alt = "Project_Image"
                     className="card-img-top mx-auto"
-                    // src='./images/portfolio.png'
+                    src='./images/drawing.jpg'
                     // src={project.images[0].url}
                     />
                     <div className="card-body d-flex flex-column">
