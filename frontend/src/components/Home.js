@@ -73,12 +73,12 @@ const Home = ({ match }) => {
                     <MetaData title= {'Buy Best Projects Online'} />
                     {
                       keyword? 
-                      (<h1 id="projects_heading">Search Results</h1>):
-                      (<h1 id="projects_heading">Latest Projects</h1>)
+                      (<h1 class="mt-4" id="projects_heading">Search Results</h1>):
+                      (<h1 class="mt-4" id="projects_heading">Latest Projects</h1>)
                     }
                     
 
-                    <section id="projects" className="container mt-5">
+                    <section id="projects" className="container mt-3">
                         <div className="row">
                           {
                             projects && projects.map(project => (

@@ -45,12 +45,16 @@ nav {
   padding: 1rem 1rem;
 }
 
+.navbar-brand img{
+  width: 100%;
+}
+
 #search_btn {
   background-color: var(--color-btn);
 }
 
 .input-group {
-  width: 90%;
+  /* width: 90%; */
   margin-right: 35%;
 }
 
