@@ -53,11 +53,11 @@ const ProcessOrder = ({ match, history }) => {
         <Fragment>
             <MetaData title={`Processs Orders # ${order && order._id}`} />
             <div className="row">
-                <div className="col-l2 col-md-2">
+                <div className="col-l2 col-md-3">
                     <Sidebar />
                 </div>
 
-                <div className="col-12 col-md-10">
+                <div className="col-12 col-md-9">
                     <Fragment>
                         {loading? <loader /> : (
                             <div className="row d-flex justify-content-around">

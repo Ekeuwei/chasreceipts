@@ -67,15 +67,14 @@ exports.getProjects = catchAsyncErrors(async (req, res, next) => {
 });
 
 // Get all projects(Admin) => /api/v1/admin/projects
-// exports.getAdminProjects = catchAsyncErrors(async (req, res, next) => {
+exports.getAdminProjects = catchAsyncErrors(async (req, res, next) => {
 
-//     const projects = await Project.find();
-
-//     res.status(200).json({
-//         success: true,
-//         projects
-//     });
-// });
+    const projects = await Project.find();
+    res.status(200).json({
+        success: true,
+        projects
+    });
+});
 
 
 // Get project by Id => /api/v1/project/:id

@@ -4,21 +4,21 @@ import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { clearErrors, deleteProduct, getAdminProducts } from '../../actions/productActions'
+import { clearErrors, deleteProject, getAdminProjects } from '../../actions/projectActions'
 
 import Sidebar from './Sidebar'
 import MetaData from '../layout/MetaData'
-import { DELETE_PRODUCT_RESET } from '../../constants/productConstants'
+import { DELETE_PROJECT_RESET } from '../../constants/projectConstants'
 
-const ProductsList = ({ history }) => {
+const ProjectsList = ({ history }) => {
     const alert = useAlert()
     const dispatch = useDispatch()
 
-    const { loading, error, products } = useSelector(state => state.products)
-    const { error: deleteError, isDeleted } = useSelector(state => state.product)
+    const { loading, error, projects } = useSelector(state => state.projects)
+    const { error: deleteError, isDeleted } = useSelector(state => state.project)
 
     useEffect(()=>{
-        dispatch(getAdminProducts())
+        dispatch(getAdminProjects())
 
         if(error){
             alert.error(error)
@@ -31,33 +31,33 @@ const ProductsList = ({ history }) => {
         }
 
         if(isDeleted){
-            alert.success('Product deleted successfully')
-            history.push('/admin/products')
-            dispatch({type: DELETE_PRODUCT_RESET})
+            alert.success('Project deleted successfully')
+            history.push('/admin/projects')
+            dispatch({type: DELETE_PROJECT_RESET})
         }
 
     }, [dispatch, alert, error, deleteError, isDeleted, history])
 
-    const setProducts = () => {
+    const setProjects = () => {
         const data = {
             columns: [
                 {
-                    label: 'ID',
-                    field: 'id',
+                    label: 'Title',
+                    field: 'title',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Client',
+                    field: 'client',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Budget',
+                    field: 'budget',
                     sort: 'asc'
                 }, {
-                    label: 'Name',
-                    field: 'name',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Price',
-                    field: 'price',
-                    sort: 'asc'
-                },
-                {
-                    label: 'Stock',
-                    field: 'stock',
+                    label: 'Status',
+                    field: 'status',
                     sort: 'asc'
                 },
                 {
@@ -69,17 +69,17 @@ const ProductsList = ({ history }) => {
             rows: []
         }
 
-        products.forEach(product => {
+        projects.forEach(project => {
             data.rows.push({
-                id: product._id,
-                name: product.name,
-                price: `$${product.price}`,
-                stock: product.stock,
+                title: project.title,
+                client: project.client,
+                budget: `₦${project.budget.toLocaleString()}`,
+                status: project.status,
                 actions: <Fragment>
-                            <Link to={`/admin/product/${product._id}`} className="btn btn-primary py-1 px-2">
+                            <Link to={`/admin/project/${project._id}`} className="btn btn-primary py-1 px-2">
                                 <i className="fa fa-pencil"></i>
                             </Link>
-                            <button className="btn btn-danger py-1 px2 ml-2" onClick={()=> deleteProductHandler(product._id)}>
+                            <button className="btn btn-danger py-1 px2 ml-2" onClick={()=> deleteProjectHandler(project._id)}>
                                 <i className="fa fa-trash"></i>
                             </button>
                         </Fragment>
@@ -91,8 +91,8 @@ const ProductsList = ({ history }) => {
         return data;
     }
 
-    const deleteProductHandler = (id)=>{
-        dispatch(deleteProduct(id))
+    const deleteProjectHandler = (id)=>{
+        dispatch(deleteProject(id))
     }
 
     return (
@@ -103,13 +103,13 @@ const ProductsList = ({ history }) => {
                     <Sidebar />
                 </div>
 
-                <div className="col-12 col-md-10">
+                <div className="col-12 col-md-9">
                     <Fragment>
-                        <h1 className="my-5">All Products</h1>
+                        <h1 className="my-5">All Projects</h1>
 
                         {loading? <loader /> : (
                             <MDBDataTable 
-                                data={setProducts()}
+                                data={setProjects()}
                                 className="px-3"
                                 bordered
                                 striped
@@ -124,4 +124,4 @@ const ProductsList = ({ history }) => {
     )
 }
 
-export default ProductsList
+export default ProjectsList

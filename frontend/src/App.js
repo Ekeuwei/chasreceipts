@@ -37,15 +37,15 @@ import OrderDetails from './components/orders/OrderDetails';
 
 // Admin Imports
 import Dashboard from './components/admin/Dashboard';
-import ProductsList from './components/admin/ProductsList';
-import NewProduct from './components/admin/NewProduct';
-import UpdateProduct from './components/admin/UpdateProduct';
+import ProjectsList from './components/admin/ProjectsList';
+import NewProject from './components/admin/NewProject';
+import UpdateProject from './components/admin/UpdateProject';
 import OrdersList from './components/admin/OrdersList';
 import ProcessOrder from './components/admin/ProcessOrder';
 import UsersList from './components/admin/UsersList';
 import UpdateUser from './components/admin/UpdateUser';
 import ProductReviews from './components/admin/ProductReviews';
-import NewProject from './components/project/NewProject';
+// import NewProject from './components/project/NewProject';
 
 function App() {
 
@@ -73,7 +73,6 @@ function App() {
           <Route path = "/" component = {Home} exact />
           <Route path = "/search/:keyword" component = {Home} />
           <Route path = "/project/:id" component = {ProjectDetails} exact />
-          <Route path = "/admin/project" component = {NewProject} exact />
           
           <Route path = "/product/:id" component = {ProductDetails} exact />
           <Route path = "/cart" component = {Cart} />
@@ -99,9 +98,9 @@ function App() {
 
         </div>
         <ProtectedRoute path = "/dashboard" isAdmin={true} component = {Dashboard} exact />
-        <ProtectedRoute path = "/admin/products" isAdmin={true} component = {ProductsList} exact />
-        <ProtectedRoute path = "/admin/product" isAdmin={true} component = {NewProduct} exact />
-        <ProtectedRoute path = "/admin/product/:id" isAdmin={true} component = {UpdateProduct} exact />
+        <ProtectedRoute path = "/admin/projects" isAdmin={true} component = {ProjectsList} exact />
+        <ProtectedRoute path = "/admin/project" isAdmin={true} component = {NewProject} exact />
+        <ProtectedRoute path = "/admin/project/:id" isAdmin={true} component = {UpdateProject} exact />
         
         <ProtectedRoute path = "/admin/orders/" isAdmin={true} component = {OrdersList} exact />
         <ProtectedRoute path = "/admin/order/:id" isAdmin={true} component = {ProcessOrder} exact />

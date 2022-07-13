@@ -323,6 +323,7 @@ footer {
 
 .wrapper form {
   padding: 2.5rem 3rem;
+  flex-grow: 1;
 }
 
 .wrapper form .btn {
@@ -509,7 +510,6 @@ footer {
   display: flex;
   width: 100%;
   align-items: stretch;
-  min-height: 100vh;
   font-weight: normal;
 
   margin-top: 0;
@@ -568,6 +568,15 @@ a[data-toggle='collapse'] {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
+}
+
+.menu-toggle a {
+  display: flex;
+  color: var(--color-white);
+  text-decoration: none;
+  align-items: center;
+  font-size: 1.35em;
+  justify-content: space-between;
 }
 
 ul ul a {
@@ -636,4 +645,39 @@ ul.CTAs a {
 .review_user {
   font-size: 0.8rem;
   color: grey;
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+  
+}
+      
+/* Low resolution Tablets and iPads */
+@media (min-width: 481px) and (max-width: 767px) {
+ 
+}
+      
+/* Tablets iPads (Portrait) */
+@media (min-width: 768px) {
+  .title, .menu-toggle{
+    display: none;
+  }
+
+  .collapse:not(.show){
+    display: contents;
+  }
+  
+  .sidebar-wrapper {    
+    min-height: 100vh;
+  }
+}
+  
+/* Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+  
+}
+  
+/* Big boi Monitors */
+@media (min-width: 1281px) {
+  
 }

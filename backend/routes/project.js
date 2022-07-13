@@ -6,7 +6,8 @@ const {
     newProject, 
     getSingleProject, 
     updateProject, 
-    deleteProject, 
+    deleteProject,
+    getAdminProjects, 
 } = require('../controllers/projectController');
 
 const { isAuthenticatedUser, authorizeRoles  } = require('../midllewares/auth');
@@ -19,6 +20,7 @@ router.route('/admin/project/:id')
                     .put(isAuthenticatedUser, authorizeRoles('admin'), updateProject)
                     .delete(isAuthenticatedUser, authorizeRoles('admin'), deleteProject);
 
+router.route('/admin/projects').get(isAuthenticatedUser, authorizeRoles('admin'), getAdminProjects)
 
             
 module.exports = router;

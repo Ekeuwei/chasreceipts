@@ -94,11 +94,11 @@ const OrdersList = ({ history }) => {
         <Fragment>
             <MetaData title={'All Orders'} />
             <div className="row">
-                <div className="col-l2 col-md-2">
+                <div className="col-l2 col-md-3">
                     <Sidebar />
                 </div>
 
-                <div className="col-12 col-md-10">
+                <div className="col-12 col-md-9">
                     <Fragment>
                         <h1 className="my-5">All Orders</h1>
 
