@@ -255,7 +255,7 @@ const UpdateProject = ({ match, history }) => {
                             className="btn btn-block py-3"
                             disabled={ loading }
                             >
-                            CREATE
+                            UPDATE
                             </button>
                 
                         </form>
