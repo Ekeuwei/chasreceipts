@@ -11,7 +11,6 @@ import { UPDATE_PROJECT_RESET } from '../../constants/projectConstants'
 const UpdateProject = ({ match, history }) => {
 
     const [client, setClient] = useState('')
-    const [contact, setContact] = useState({})
     const [contactName, setContactName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [email, setEmail] = useState('')
@@ -50,7 +49,6 @@ const UpdateProject = ({ match, history }) => {
         } else {
             setTitle(project.title)
             setClient(project.client)
-            setContact(project.contact)
             setContactName(project.contact.name)
             setPhoneNumber(project.contact.phone)
             setEmail(project.contact.email)
@@ -136,7 +134,7 @@ const UpdateProject = ({ match, history }) => {
                                 id="contact"
                                 className="form-control"
                                 value={contactName}
-                                onChange = {(e) => setContact(e.target.value)}
+                                onChange = {(e) => setContactName(e.target.value)}
                                 />
                             </div>
 

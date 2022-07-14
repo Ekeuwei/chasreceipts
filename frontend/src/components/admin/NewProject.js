@@ -10,7 +10,6 @@ import { NEW_PROJECT_RESET } from '../../constants/projectConstants'
 
 const NewProject = ({ history }) => {
     const [client, setClient] = useState('')
-    const [contact, setContact] = useState({})
     const [contactName, setContactName] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [email, setEmail] = useState('')
@@ -106,7 +105,7 @@ const NewProject = ({ history }) => {
                                 id="contact"
                                 className="form-control"
                                 value={contactName}
-                                onChange = {(e) => setContact(e.target.value)}
+                                onChange = {(e) => setContactName(e.target.value)}
                                 />
                             </div>
 
