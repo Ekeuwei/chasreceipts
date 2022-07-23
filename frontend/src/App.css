@@ -647,6 +647,14 @@ ul.CTAs a {
   color: grey;
 }
 
+#centerButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 50vh;
+}
+
 /* Mobile Devices */
 @media (max-width: 480px) {
   
