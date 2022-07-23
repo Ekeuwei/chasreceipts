@@ -78,7 +78,7 @@ const ProjectDetails = ({ match }) => {
                             <th>₦{ project.payments && project.payments.map(v => v.amount).reduce((a, b) => a + b, 0).toLocaleString()}</th>
                         </tr>
                     </table>
-                    <Link to={`invoice/${project._id}`} className="btn mb-2" id="login_btn">Generate Invoice</Link>
+                    <Link to="/login" className="btn mb-2" id="login_btn">Close</Link>
                     {/* <button id="login_button" className="btn btn-block py-3" type="submit">Close</button> */}
                 </div>
 

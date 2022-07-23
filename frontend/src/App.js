@@ -45,6 +45,7 @@ import ProcessOrder from './components/admin/ProcessOrder';
 import UsersList from './components/admin/UsersList';
 import UpdateUser from './components/admin/UpdateUser';
 import ProductReviews from './components/admin/ProductReviews';
+import ReceiptInvoice from './components/project/ReceiptInvoice';
 // import NewProject from './components/project/NewProject';
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+        <Route path = "/project/invoice/:id" component = {ReceiptInvoice} exact />
         <div className="container">
           <Route path = "/" component = {Home} exact />
           <Route path = "/search/:keyword" component = {Home} />
