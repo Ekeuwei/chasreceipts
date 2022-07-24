@@ -11,8 +11,9 @@ function getBalance(project){
 
 const styles = StyleSheet.create({
     page: {
-        lineHeight: 1.25,
-        fontSize: '14px'
+        lineHeight: 1.30,
+        fontSize: '14px',
+        fontFamily: 'Helvetica'
       },
     h1:{
         fontSize: '32px',
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
         margin: 'auto 0'
     },
     invoice: {
-        padding: '10px',
+        padding: '20px',
         // backgroundColor: 'white',
         // margin: 'auto'
     },
@@ -80,13 +81,24 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        padding: '5px 10px',
         marginBottom: '10px'
     },
+    t_row_head: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: '10px',
+        padding: '5px 10px',
+        borderRadius: '5px',
+        backgroundColor: '#adc0d7'
+    },
     p_heading: {
-        margin: '10px 10px 0',
+        margin: '10px 20px 0',
+        fontFamily: 'Helvetica-Bold'
     },
     tableFirstColumn: {
-        width: '70%'
+        width: '80%'
     }
 })
 
@@ -101,12 +113,14 @@ const Receipt = ({project}) => {
                         <View style={styles.address_head}>
                             <View style={styles.h5First}><Text>Contemporary Homes and Styles</Text></View>
                             <View style={styles.clientAddress}>
-                                <Text style={styles.right}>17 Baybridge Road, Kpansia</Text>
+                                <Text style={styles.right}>No. 31 Imgbi Road, Opposite Frank West Hospital</Text>
                                 <Text style={styles.right}>Yenagoa, Bayelsa State</Text>
-                                <Text style={styles.right}>info@chas.com</Text>
+                                <Text style={styles.right}>dreamworld360@gmail.com</Text>
+                                <Text style={styles.right}>+2348034929494</Text>
                             </View>
                         </View>
                     </View>
+                    <Text style={{marginLeft: '10px', fontFamily: 'Helvetica-Bold'}}>Billed to:</Text>
                     <View style={styles.client_address}>
                         <View style={styles.centerAlign}>
                             <Text style={styles.h5Bold}>Invoice Number</Text>
@@ -117,7 +131,6 @@ const Receipt = ({project}) => {
                         <View style={styles.clientAddress}>
                             <Text style={styles.right}>{project.client}</Text>
                             <Text style={styles.right}>{project.contact.address}</Text>
-                            <Text style={styles.right}>{project.contact.email}</Text>
                             <Text style={styles.right}>{project.contact.phone}</Text>
                         </View>
 
@@ -125,37 +138,42 @@ const Receipt = ({project}) => {
 
                     <View style={styles.invoicedetails}>
                         <View style={styles.table}>
-                            <View style={styles.t_row}>
+                            <View style={styles.t_row_head}>
                                 <Text>Service Description</Text>
                                 <Text>Cost</Text>
                             </View>
                             <View style={styles.t_row}>
                                 <Text style={styles.tableFirstColumn}>{project.description}</Text>
-                                <Text style={styles.centerAlign}>{project.budget.toLocaleString()}</Text>
+                                <Text style={styles.centerAlign}>{`${project.budget.toLocaleString()}`}</Text>
                             </View>
 
                         </View>
                     </View>
 
                     <View style={styles.invoicedetails}>
-                        <Text style={styles.p_heading}>PAYMENTS</Text>
+                        <Text style={styles.p_heading}>Payments</Text>
                         <View style={styles.table}>
-                            <View style={styles.t_row}>
+                            <View style={styles.t_row_head}>
                                 <Text>Payment Date</Text>
                                 <Text>Amount</Text>
                             </View>
-                            {project.payments.size===0? 
-                            <Fragment> 
-                                {project.payments.map( payment =>(
-                                    <View style={styles.t_row}>
-                                        <Text style={styles.tableFirstColumn}>{new Date(payment.date).toLocaleDateString('en-us', dateFormat)}</Text>
-                                        <Text style={styles.centerAlign}>{payment.amount.toLocaleString()}</Text>
-                                    </View>
-                                ))}
-                            </Fragment> : <View style={{margin:'10 auto'}}> <Text>No Previous payments</Text> </View>}
+                            {
+                                project.payments.length===0? 
+                                (<View style={{margin:'10 auto'}}> 
+                                    <Text>No Previous payments</Text>
+                                </View>) : 
+                                <Fragment> 
+                                    {project.payments.map( payment =>(
+                                        <View style={styles.t_row}>
+                                            <Text style={styles.tableFirstColumn}>{new Date(payment.date).toLocaleDateString('en-us', dateFormat)}</Text>
+                                            <Text style={styles.centerAlign}>{`${payment.amount.toLocaleString()}`}</Text>
+                                        </View>
+                                    ))}
+                                </Fragment>
+                            }
                             <View style={styles.t_row}>
                                 <Text>Balance</Text>
-                                <Text>{getBalance(project).toLocaleString()}</Text>
+                                <Text>{`${getBalance(project).toLocaleString()}`}</Text>
                             </View>
 
                         </View>
