@@ -259,7 +259,7 @@ const UpdateProject = ({ match, history }) => {
                                 </div>
                                 <div class="list-group">
                                     { payments.map((payment, index) => (
-                                        <li class="list-group-item list-group-item-action d-flex justify-content-between" key={index}>
+                                        <li class="p-2 list-group-item list-group-item-action d-flex justify-content-between" key={index}>
                                             <span className="my-auto mr-3">{payment.amount.toLocaleString()}</span>
                                             <span className="my-auto">{new Date(payment.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                                             <button class="btn btn-secondary mt-0 float-right fa fa-trash" 

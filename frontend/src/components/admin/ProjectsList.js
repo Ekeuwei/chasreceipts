@@ -3,6 +3,7 @@ import { MDBDataTable } from 'mdbreact'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import {MobileView, BrowserView} from 'react-device-detect'
 
 import { clearErrors, deleteProject, getAdminProjects } from '../../actions/projectActions'
 
@@ -92,6 +93,48 @@ const ProjectsList = ({ history }) => {
         return data;
     }
 
+    const setProjectsMobile = () => {
+        const data = {
+            columns: [
+                {
+                    label: 'Client',
+                    field: 'client',
+                    sort: 'asc'
+                },
+                {
+                    label: 'Budget',
+                    field: 'budget',
+                    sort: 'asc'
+                }, 
+                {
+                    label: 'Actions',
+                    field: 'actions',
+                    sort: 'asc'
+                },
+            ],
+            rows: []
+        }
+
+        projects.forEach(project => {
+            data.rows.push({
+                client: project.client,
+                budget: `₦${project.budget.toLocaleString()}`,
+                actions: <Fragment>
+                            <Link to={`/admin/project/${project._id}`} className="btn btn-primary py-1 px-2">
+                                <i className="fa fa-pencil"></i>
+                            </Link>
+                            <button className="btn btn-danger py-1 px2 ml-2" onClick={()=> deleteProjectHandler(project._id)}>
+                                <i className="fa fa-trash"></i>
+                            </button>
+                        </Fragment>
+                    
+
+            })
+        })
+
+        return data;
+    }
+
     const deleteProjectHandler = (id)=>{
         dispatch(deleteProject(id))
     }
@@ -109,13 +152,27 @@ const ProjectsList = ({ history }) => {
                         <h1 className="my-5">All Projects</h1>
 
                         {loading? <loader /> : (
-                            <MDBDataTable 
-                                data={setProjects()}
-                                className="px-3"
-                                bordered
-                                striped
-                                hover
-                            />
+                            <Fragment>
+                                <MobileView>
+                                    <MDBDataTable 
+                                        data={setProjectsMobile()}
+                                        className="px-3"
+                                        bordered
+                                        striped
+                                        hover
+                                    />
+                                </MobileView>
+                                <BrowserView>
+                                    <MDBDataTable 
+                                        data={setProjects()}
+                                        className="px-3"
+                                        bordered
+                                        striped
+                                        hover
+                                    />
+                                </BrowserView>
+                            </Fragment>
+                            
                         )}
                     </Fragment>
                 </div>
