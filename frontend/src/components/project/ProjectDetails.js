@@ -70,12 +70,12 @@ const ProjectDetails = ({ match }) => {
                         {project.payments && project.payments.map(payment =>(
                             <tr>
                                 <td className="pl-0">{new Date(payment.date).toLocaleDateString('en-us', dateFormat)}</td>
-                                <td>₦{payment.amount.toLocaleString()}</td>
+                                <td className="text-right">₦{payment.amount.toLocaleString()}</td>
                             </tr>                                
                         ))}
                         <tr>
                             <th className="pl-0">Total</th>
-                            <th>₦{ project.payments && project.payments.map(v => v.amount).reduce((a, b) => a + b, 0).toLocaleString()}</th>
+                            <th className="text-right">₦{ project.payments && project.payments.map(v => v.amount).reduce((a, b) => a + b, 0).toLocaleString()}</th>
                         </tr>
                     </table>
                     <Link to={`invoice/${project._id}`} className="btn mb-2" id="login_btn">Generate Invoice</Link>

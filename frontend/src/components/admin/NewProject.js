@@ -19,6 +19,8 @@ const NewProject = ({ history }) => {
     const [duration, setDuration] = useState('')
     const [budget, setBudget] = useState('')
     const [payments, setPayments] = useState([])
+    const [payAmount, setPayAmount] = useState('')
+    const [payComment, setPayComment] = useState('')
     const [category, setCategory] = useState('')
     const [status, setStatus] = useState('')
 
@@ -63,7 +65,7 @@ const NewProject = ({ history }) => {
             email: email,
             address: address
         }))
-        formData.set('payments', JSON.stringify([{amount: payments}]))
+        formData.set('payments', JSON.stringify(payments))
         formData.set('title', title)
         formData.set('description', description)
         formData.set('duration', duration)
@@ -73,6 +75,18 @@ const NewProject = ({ history }) => {
         dispatch(newProject(formData))
     }
     
+    function removePayment(deleteIndex) {
+        setPayments(payments.filter((_, index) => index !== deleteIndex));
+    }
+
+    function addPayment(){
+        let date = Date.now();
+        
+        setPayments([...payments, {amount:payAmount, comment:payComment, date}])
+        setPayAmount('')
+        setPayComment('')
+    }
+
     return (
         <Fragment>
             <MetaData title={'Update Project'} />
@@ -206,17 +220,25 @@ const NewProject = ({ history }) => {
                                     ))}
                                 </select>
                             </div>
-                            <div className="form-group">
+                            <div class="form-group col px-0">
                                 <label htmlFor="payments">Payment Installment</label>
-                                <input
-                                type="number"
-                                id="payments"
-                                className="form-control"
-                                value={payments}
-                                onChange={(e) => setPayments(e.target.value)}
-                                />
-                            </div>
-                
+                                <div class="input-group mb-3">
+                                    <input type="number" placeholder='₦0.00' id="p_amount" className="form-control" value={payAmount} onChange={(e) => setPayAmount(e.target.value)} />
+                                    <textarea rows="1" placeholder='comment' id="p_comment" className="form-control" value={payComment} onChange={(e) => setPayComment(e.target.value)} />
+                                    <button class="btn btn-secondary mt-0" type="button" id="button-addon2"
+                                    onClick={()=> addPayment()}>Add</button>
+                                </div>
+                                <div class="list-group">
+                                    { payments.map((payment, index) => (
+                                        <li class="list-group-item list-group-item-action d-flex justify-content-between" key={index}>
+                                            <span className="my-auto mr-3">{payment.amount.toLocaleString()}</span>
+                                            <span className="my-auto">{new Date(payment.date).toLocaleDateString('en-us', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                                            <button class="btn btn-secondary mt-0 float-right fa fa-trash" 
+                                            type="button" onClick={()=> removePayment(index)}></button>
+                                        </li>
+                                    ))}
+                                </div>
+                            </div>                                        
                 
                             <button
                             id="login_button"

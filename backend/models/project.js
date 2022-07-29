@@ -84,7 +84,8 @@ const projectSchema = new mongoose.Schema({
             amount: {
                 type: Number,
                 required: true
-            }
+            },
+            comment: String
         }
     ],
     status: {

@@ -44,7 +44,8 @@ const ProjectsList = ({ history }) => {
                 {
                     label: 'Title',
                     field: 'title',
-                    sort: 'asc'
+                    sort: 'asc',
+                    // attributes: {className:'d-none d-md-block'}
                 },
                 {
                     label: 'Client',

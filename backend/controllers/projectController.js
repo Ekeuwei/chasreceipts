@@ -134,6 +134,8 @@ exports.updateProject = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler('Project Not Found', 404));
     }
 
+    req.body.contact = JSON.parse(req.body.contact);
+    req.body.payments = JSON.parse(req.body.payments);
     project = await Project.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
