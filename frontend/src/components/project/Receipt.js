@@ -126,7 +126,7 @@ const Receipt = ({project}) => {
                             <Text style={styles.h5Bold}>Invoice Number</Text>
                             <Text style={{marginBottom:'10px'}}>{project._id}</Text>
                             <Text style={styles.h5Bold}>Issue Date</Text>
-                            <Text style={styles.h5}>{new Date().toLocaleDateString('en-us', dateFormat)}</Text>
+                            <Text style={styles.h5}>{new Date(project.payments[project.payments.length-1].date).toLocaleDateString('en-us', dateFormat)}</Text>
                         </View>
                         <View style={styles.clientAddress}>
                             <Text style={styles.right}>{project.client}</Text>
